@@ -25,13 +25,22 @@ def get_all_examples():
 
 def main():
     examples = get_all_examples()
+    # # Insert Data
+    # new_id = max([ex.id for ex in examples]) + 1
+    # new_example = Example(new_id, "from python")
+    # db.session.add(new_example)
 
-    new_id = max([ex.id for ex in examples]) + 1
-    new_example = Example(new_id, "from python")
-    db.session.add(new_example)
-    db.session.commit()
+    # Update data
+    update_row = Example.query.filter_by(id=3).first()
+    update_row.data = "updated 3"
+
+
+    # Delete data
+    # delete_row = Example.query.filter_by(id=2).first()
+    # db.session.delete(delete_row)
+
+    db.session.commit() # commit to db
     examples = get_all_examples()
-
 
 
 if __name__ == '__main__':
